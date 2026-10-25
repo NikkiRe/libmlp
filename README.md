@@ -70,6 +70,8 @@ int main(void) {
 }
 ```
 
+Пример выше, сохранённый в `example.c`, собирается так:
+
 ```bash
 cc -O2 -o example example.c mlp.c
 ./example
