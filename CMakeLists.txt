@@ -1,9 +1,7 @@
-cmake_minimum_required(VERSION 4.0)
-project(untitled C)
+cmake_minimum_required(VERSION 3.10)
+project(libmlp C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(untitled main.c
-        mlp.h
-        mlp.c
-)
+add_executable(pong main.c mlp.c)
+target_link_libraries(pong PRIVATE m)

@@ -24,6 +24,8 @@ void mlp_free(MLP *mlp);
 
 void mlp_forward(MLP *mlp, const double *inputs);
 void mlp_train(MLP *mlp, const double *inputs, const double *targets, size_t epochs);
+void mlp_train_batch(MLP *mlp, const double **inputs, const double **targets,
+                     size_t batch_size, size_t epochs);
 
 void mlp_predict(MLP *mlp, const double *inputs, double *outputs);
 

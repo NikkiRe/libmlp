@@ -115,7 +115,12 @@ void mlp_train(MLP *mlp, const double *inputs, const double *targets, size_t epo
                     L->deltas[j] = err * dsigmoid(L->outputs_cache[j]);
                 }
             }
+        }
 
+        /* weights are updated only after all deltas are computed,
+           otherwise hidden deltas would use already updated weights */
+        for (size_t i = 0; i < mlp->n_layers; ++i) {
+            Layer *L = &mlp->layers[i];
             const double *prev_out = (i == 0) ? inputs : mlp->layers[i - 1].outputs_cache;
             for (size_t o = 0; o < L->outputs; ++o) {
                 for (size_t k = 0; k < L->inputs; ++k) {
